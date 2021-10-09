@@ -2,6 +2,7 @@
 
 #include "USART.h"
 #include "DHT.h"
+#include "EC.h"
 
 int main(void) {
     // Inicinado o USART.
