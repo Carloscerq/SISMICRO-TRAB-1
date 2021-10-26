@@ -1,15 +1,15 @@
-#include <xc.h>
 #include <avr/interrupt.h>
+#include <xc.h>
 
-#include "USART.h"
-#include "I2C.h"
-#include "DHT.h"
 #include "BH1750.h"
 #include "BMP.h"
+#include "DHT.h"
 #include "EC.h"
+#include "I2C.h"
+#include "USART.h"
 
-int main(void) {
-    // ======== INICIANDO OS MÉTODOS DE COMUNICAÇÃO E SENSORES ========
+int main() {
+    // ======== INICIANDO OS Mï¿½TODOS DE COMUNICAï¿½ï¿½O E SENSORES ========
 
     // Iniciando o USART.
     // OBS: Para todos os comandos, verificar arquivo "USART.h"
@@ -20,21 +20,20 @@ int main(void) {
     bh1750_init();
     uint16_t lux;
 
-    // Variável de pressão do BMP
+    // Variï¿½vel de pressï¿½o do BMP
     uint16_t pres;
 
     // Iniciando o rotary encoder EC11E.
     // OBS: Para todos os comandos, verificar arquivo "EC.h"
     EC_init();
-    // Variável para armazenar as rotações do encoder EC11E
+    // Variï¿½vel para armazenar as rotaï¿½ï¿½es do encoder EC11E
     uint16_t Rotations;
 
-    // Variáveis do DHT22
+    // Variï¿½veis do DHT22
     uint8_t I_RH, D_RH, I_Temp, D_Temp, CheckSum;
 
     // Iniciando interrupt
     sei();
-
 
     // ================
 
@@ -53,18 +52,16 @@ int main(void) {
 
     // ================
 
-
     while (1) {
-
         // ======== DHT22 ========
 
         // Pedir data:
-        Request(); /* enviando start pulse */
+        Request();  /* enviando start pulse */
         Response(); /* recebendo resposta */
 
         // Receber data:
         I_RH = Receive_data(); /* armazenar primeiro byte em I_RH */
-        D_RH = Receive_data(); /* armazenar último byte em D_RH */
+        D_RH = Receive_data(); /* armazenar ï¿½ltimo byte em D_RH */
         i = 0;
         while (hum[i] != 0) /* printar temp */ {
             USART_Transmit(hum[i]);
@@ -74,7 +71,7 @@ int main(void) {
         USART_Transmit(D_RH);
 
         I_Temp = Receive_data(); /* armazenar primeiro byte em I_Temp */
-        D_Temp = Receive_data(); /* armazenar último byte em D_Temp */
+        D_Temp = Receive_data(); /* armazenar ï¿½ltimo byte em D_Temp */
         i = 0;
         while (temp[i] != 0) /* printar temp */ {
             USART_Transmit(temp[i]);
@@ -83,17 +80,14 @@ int main(void) {
         USART_Transmit(I_Temp);
         USART_Transmit(D_Temp);
 
-
-        // Checksum não usado no código,
-        // porém, pode ser usado para conferir
-        // se os dados estão corretos lá no Data Logger.
+        // Checksum nï¿½o usado no cï¿½digo,
+        // porï¿½m, pode ser usado para conferir
+        // se os dados estï¿½o corretos lï¿½ no Data Logger.
         CheckSum = Receive_data(); /* armazenar byte do checksum em CheckSum */
-
 
         // ======== BH1750 ========
 
-
-        // Pegar nível de lux
+        // Pegar nï¿½vel de lux
         lux = bh1750_getlux();
         itoa(lux, luxbuff, 10); /* integer => string */
 
@@ -110,7 +104,6 @@ int main(void) {
             i++;
         }
 
-
         // ======== BMP180 ========
 
         Request_BMP();
@@ -125,7 +118,6 @@ int main(void) {
         }
         USART_Transmit(pres);
 
-
         // ======== EC11E ========
 
         // Recebendo os dados do rotary encoder e transmitindo via USART
@@ -137,16 +129,17 @@ int main(void) {
         }
         USART_Transmit(Rotations >> 15);
 
-
         i = 0;
         while (puls[i] != 0) {
             USART_Transmit(puls[i]);
             i++;
         }
-        USART_Transmit((Rotations >> 8) & 0b1111111101111111); // Trasnmitindo primeiro byte (mais significativos)
-        USART_Transmit(Rotations & 0xFF); // Transmitindo segundo byte (menos significativos))
-
-
+        USART_Transmit((Rotations >> 8) &
+                       0b1111111101111111);  // Trasnmitindo primeiro byte (mais
+                                             // significativos)
+        USART_Transmit(
+            Rotations &
+            0xFF);  // Transmitindo segundo byte (menos significativos))
 
         // ================
 

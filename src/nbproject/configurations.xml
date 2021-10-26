@@ -11,6 +11,7 @@
       <itemPath>FCPU.h</itemPath>
       <itemPath>EC.h</itemPath>
       <itemPath>BMP.h</itemPath>
+      <itemPath>RTC.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -26,6 +27,7 @@
       <itemPath>i2c.c</itemPath>
       <itemPath>ec.c</itemPath>
       <itemPath>bmp.c</itemPath>
+      <itemPath>rtc.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

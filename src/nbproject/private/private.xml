@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/joaop/Desktop/SISMICRO-TRAB-1/src/ec.c</file>
-            <file>file:/C:/Users/joaop/Desktop/SISMICRO-TRAB-1/src/EC.h</file>
-            <file>file:/C:/Users/joaop/Desktop/SISMICRO-TRAB-1/src/main.c</file>
+            <file>file:/Volumes/HDD/FACULDADE/ENGC50%20SISTEMAS%20MICROPROCESSADOS%20/1.%20Trabalho%20-%20GitHub/SISMICRO-TRAB-2/src/USART.h</file>
+            <file>file:/Volumes/HDD/FACULDADE/ENGC50%20SISTEMAS%20MICROPROCESSADOS%20/1.%20Trabalho%20-%20GitHub/SISMICRO-TRAB-2/src/main.c</file>
+            <file>file:/Volumes/HDD/FACULDADE/ENGC50%20SISTEMAS%20MICROPROCESSADOS%20/1.%20Trabalho%20-%20GitHub/SISMICRO-TRAB-2/src/I2C.h</file>
+            <file>file:/Volumes/HDD/FACULDADE/ENGC50%20SISTEMAS%20MICROPROCESSADOS%20/1.%20Trabalho%20-%20GitHub/SISMICRO-TRAB-2/src/usart.c</file>
+            <file>file:/Volumes/HDD/FACULDADE/ENGC50%20SISTEMAS%20MICROPROCESSADOS%20/1.%20Trabalho%20-%20GitHub/SISMICRO-TRAB-2/src/RTC.h</file>
+            <file>file:/Volumes/HDD/FACULDADE/ENGC50%20SISTEMAS%20MICROPROCESSADOS%20/1.%20Trabalho%20-%20GitHub/SISMICRO-TRAB-2/src/i2c.c</file>
+            <file>file:/Volumes/HDD/FACULDADE/ENGC50%20SISTEMAS%20MICROPROCESSADOS%20/1.%20Trabalho%20-%20GitHub/SISMICRO-TRAB-2/src/rtc.c</file>
         </group>
     </open-files>
 </project-private>
