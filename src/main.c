@@ -50,7 +50,7 @@ int main(void) {
     //char temp[] = "Temperatura: ";
     //char hum[] = "Umidade: ";
     //char lum[] = "Luminosidade: ";
-    char luxbuff[100];
+    //char luxbuff[100];
     //char pre[] = "Pressao: ";
     //char sent[] = "Sentido da rotacao: ";
     //char puls[] = "Numero de pulsos: ";
@@ -67,8 +67,6 @@ int main(void) {
 	if(ESP8266_connected() == ESP8266_NOT_CONNECTED_TO_AP)
 	ESP8266_JoinAccessPoint(SSID, PASSWORD);
 	ESP8266_Start(0, DOMAIN, PORT);
-
-    //uint8_t i = 0;
     
     while (1) {
         
@@ -93,19 +91,19 @@ int main(void) {
         //i = 0;
         
         
-        ESP8266_Send((char*) I_RH);
+        ESP8266_Send(I_RH);
 		_delay_ms(THINGSPEAKER_DELAY);	
         
-        ESP8266_Send((char*) D_RH);
+        ESP8266_Send(D_RH);
 		_delay_ms(THINGSPEAKER_DELAY);	
 
         I_Temp = Receive_data(); /* armazenar primeiro byte em I_Temp */
         D_Temp = Receive_data(); /* armazenar último byte em D_Temp */
         
-        ESP8266_Send((char*) I_Temp);
+        ESP8266_Send(I_Temp);
 		_delay_ms(THINGSPEAKER_DELAY);	
         
-        ESP8266_Send((char*) D_Temp);
+        ESP8266_Send(D_Temp);
 		_delay_ms(THINGSPEAKER_DELAY);	
         
         // Checksum não usado no código,
@@ -119,10 +117,10 @@ int main(void) {
 
         // Pegar nível de lux
         lux = bh1750_getlux();
-        itoa(lux, luxbuff, 10); /* integer => string */
+        // itoa(lux, luxbuff, 10); /* integer => string */
         
         // Transmitir lux para USART
-        ESP8266_Send((char*) lux);
+        ESP8266_Send(lux);
 		_delay_ms(THINGSPEAKER_DELAY);
 
 
@@ -132,7 +130,7 @@ int main(void) {
 
         pres = Receive_data_BMP(__BMP_DELAY_PRESSURE_STD);
 
-        ESP8266_Send((char*) pres);
+        ESP8266_Send(pres);
 		_delay_ms(THINGSPEAKER_DELAY);
 
 
@@ -141,7 +139,7 @@ int main(void) {
         // Recebendo os dados do rotary encoder e transmitindo via USART
         Rotations = Receive_data_EC();
 
-        ESP8266_Send((char*) Rotations);
+        ESP8266_Send(Rotations);
 		_delay_ms(THINGSPEAKER_DELAY);
 
     }

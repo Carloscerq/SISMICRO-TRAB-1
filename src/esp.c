@@ -5,7 +5,7 @@ volatile int16_t Counter = 0, pointer = 0;
 uint32_t TimeOut = 0;
 char RESPONSE_BUFFER[DEFAULT_BUFFER_SIZE];
 
-uint8_t ESP8266_Start(uint8_t _ConnectionNumber, const char* Domain, const char* Port) {
+uint8_t ESP8266_Start(uint8_t _ConnectionNumber, const char Domain[], const char Port[]) {
 	bool _startResponse;
 	char _atCommand[60];
 	memset(_atCommand, 0, 60);
@@ -30,14 +30,14 @@ void ESP8266_Clear()
 	Counter = 0;	pointer = 0;
 }
 
-void Start_Read_Response(char* _ExpectedResponse) {
+void Start_Read_Response(char _ExpectedResponse[]) {
 	Response_Status = ESP8266_RESPONSE_STARTING;
 	do {
 		Read_Response(_ExpectedResponse);
 	} while(Response_Status == ESP8266_RESPONSE_WAITING);
 }
 
-void Read_Response(char* _Expected_Response) {
+void Read_Response(char _Expected_Response[]) {
   uint8_t EXPECTED_RESPONSE_LENGTH = strlen(_Expected_Response);
   uint32_t TimeCount = 0, ResponseBufferLength;
   char RECEIVED_CRLF_BUF[EXPECTED_RESPONSE_LENGTH];
@@ -81,7 +81,7 @@ void Read_Response(char* _Expected_Response) {
   }
 }
 
-bool WaitForExpectedResponse(char* ExpectedResponse) {
+bool WaitForExpectedResponse(char ExpectedResponse[]) {
 	Start_Read_Response(ExpectedResponse);	
 	if((Response_Status != ESP8266_RESPONSE_TIMEOUT)) {
         return true;
@@ -89,7 +89,7 @@ bool WaitForExpectedResponse(char* ExpectedResponse) {
 	return false;				
 }
 
-bool SendATandExpectResponse(char* ATCommand, char* ExpectedResponse) {
+bool SendATandExpectResponse(char ATCommand[], char ExpectedResponse[]) {
     
 	ESP8266_Clear();
     
@@ -110,7 +110,7 @@ bool SendATandExpectResponse(char* ATCommand, char* ExpectedResponse) {
 bool ESP8266_ApplicationMode(const uint8_t Mode) {
 	char _atCommand[20];
 	memset(_atCommand, 0, 20);
-	sprintf(_atCommand, "AT+CIPMODE=%d", Mode);
+	//sprintf(_atCommand, "AT+CIPMODE=%d", Mode);
 	_atCommand[19] = 0;
     
     char _expectedResponse[] = "\r\nOK\r\n";
@@ -121,7 +121,7 @@ bool ESP8266_ApplicationMode(const uint8_t Mode) {
 bool ESP8266_ConnectionMode(const uint8_t Mode) {
 	char _atCommand[20];
 	memset(_atCommand, 0, 20);
-	sprintf(_atCommand, "AT+CIPMUX=%d", Mode);
+	//sprintf(_atCommand, "AT+CIPMUX=%d", Mode);
 	_atCommand[19] = 0;
     
     char _expectedResponse[] = "\r\nOK\r\n";
@@ -132,7 +132,7 @@ bool ESP8266_ConnectionMode(const uint8_t Mode) {
 bool ESP8266_WIFIMode(const uint8_t _mode) {
 	char _atCommand[20];
 	memset(_atCommand, 0, 20);
-	sprintf(_atCommand, "AT+CWMODE=%d", _mode);
+	//sprintf(_atCommand, "AT+CWMODE=%d", _mode);
 	_atCommand[19] = 0;
     
     char _expectedResponse[] = "\r\nOK\r\n";
@@ -140,11 +140,11 @@ bool ESP8266_WIFIMode(const uint8_t _mode) {
 	return SendATandExpectResponse(_atCommand, _expectedResponse);
 }
 
-uint8_t ESP8266_JoinAccessPoint(const char* _SSID, const char* _PASSWORD) {
+uint8_t ESP8266_JoinAccessPoint(const char _SSID[], const char _PASSWORD[]) {
     
 	char _atCommand[60];
 	memset(_atCommand, 0, 60);
-	sprintf(_atCommand, "AT+CWJAP=\"%s\",\"%s\"", _SSID, _PASSWORD);
+	//sprintf(_atCommand, "AT+CWJAP=\"%s\",\"%s\"", _SSID, _PASSWORD);
 	_atCommand[59] = 0;
     
     char _expectedResponse[] = "\r\nWIFI CONNECTED\r\n";
@@ -185,10 +185,10 @@ uint8_t ESP8266_connected() {
     
 }
 
-uint8_t ESP8266_Send(char* Data) {
+uint8_t ESP8266_Send(char Data[]) {
 	char _atCommand[20];
 	memset(_atCommand, 0, 20);
-	sprintf(_atCommand, "AT+CIPSEND=%d", (strlen(Data)+2));
+	//sprintf(_atCommand, "AT+CIPSEND=%d", (strlen(Data)+2));
 	_atCommand[19] = 0;
     
     char _expectedResponse[] = "\r\nOK\r\n>";
@@ -207,7 +207,7 @@ int16_t ESP8266_DataAvailable() {
 	return (Counter - pointer);
 }
 
-uint16_t Read_Data(char* _buffer) {
+uint16_t Read_Data(char _buffer[]) {
     
 	uint16_t len = 0;
 	_delay_ms(100);
@@ -244,7 +244,7 @@ bool ESP8266_Begin() {
     
 }
 
-void GetResponseBody(char* Response, uint16_t ResponseLength) {
+void GetResponseBody(char Response[], uint16_t ResponseLength) {
 
 	uint16_t i = 12;
 	char buffer[5];

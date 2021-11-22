@@ -72,25 +72,25 @@ uint8_t ESP8266_Start(uint8_t _ConnectionNumber, const char* Domain, const char*
 
 void ESP8266_Clear(); // Limpar o ESP8266
 
-void Start_Read_Response(char* _ExpectedResponse); // Iniciar a leitura da Response
-void Read_Response(char* _Expected_Response); // Ler a Response
-bool WaitForExpectedResponse(char* ExpectedResponse); // Conferir a Response
-bool SendATandExpectResponse(char* ATCommand, char* ExpectedResponse); // Enviar o comando AT
+void Start_Read_Response(char _ExpectedResponse[]); // Iniciar a leitura da Response
+void Read_Response(char _Expected_Response[]); // Ler a Response
+bool WaitForExpectedResponse(char ExpectedResponse[]); // Conferir a Response
+bool SendATandExpectResponse(char ATCommand[], char ExpectedResponse[]); // Enviar o comando AT
 
 bool ESP8266_ApplicationMode(const uint8_t Mode); // Definir o Application Mode
 bool ESP8266_ConnectionMode(const uint8_t Mode); // Definir o Connection Mode
 bool ESP8266_WIFIMode(const uint8_t _mode); // Definir o WIFI Mode
 
-uint8_t ESP8266_JoinAccessPoint(const char* _SSID, const char* _PASSWORD); // Configuração do ponto de acesso
+uint8_t ESP8266_JoinAccessPoint(const char _SSID[], const char _PASSWORD[]); // Configuração do ponto de acesso
 uint8_t ESP8266_connected(); // Status da conexão do ESP
 
-uint8_t ESP8266_Send(char* Data); // Envio de dados pelo ESP
+uint8_t ESP8266_Send(char Data[]); // Envio de dados pelo ESP
 int16_t ESP8266_DataAvailable(); // Verificação da disponibilidade de dados
-uint16_t Read_Data(char* _buffer);
+uint16_t Read_Data(char _buffer[]);
 uint8_t ESP8266_DataRead(); // Leitura de dados
 
 bool ESP8266_Begin(); // Iniciar a comunicação
-void GetResponseBody(char* Response, uint16_t ResponseLength); // Extrair o corpo da Response
+void GetResponseBody(char Response[], uint16_t ResponseLength); // Extrair o corpo da Response
 bool ESP8266_Close(); // Fechar o comunicação
 
 
