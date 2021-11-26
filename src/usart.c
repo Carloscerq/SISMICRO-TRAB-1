@@ -2,8 +2,8 @@
 
 void USART_Init(unsigned int ubrr) {
     /* Setar baud rate */
-    UBRR0H = (unsigned char) (ubrr >> 8);
-    UBRR0L = (unsigned char) ubrr;
+    UBRR0H = (unsigned char)(ubrr >> 8);
+    UBRR0L = (unsigned char)ubrr;
 
     /* Ativar receiver etransmitter */
     UCSR0B = (1 << RXEN0) | (1 << TXEN0);
@@ -14,12 +14,13 @@ void USART_Init(unsigned int ubrr) {
 
 void USART_Transmit(unsigned char data) {
     /* Esperar para esvaziar o transmit buffer */
-    while (!(UCSR0A & (1 << UDRE)));
+    while (!(UCSR0A & (1 << UDRE)))
+        ;
     /* Colocar data no buffer (enviar data) */
     UDR0 = data;
 }
 
-unsigned char USART_Receive(void) {
+unsigned char USART_Receive() {
     /* Esperar receber a data */
     while (!(UCSR0A & (1 << RXC)))
         ;
@@ -27,7 +28,7 @@ unsigned char USART_Receive(void) {
     return UDR0;
 }
 
-void USART_Flush(void) {
+void USART_Flush() {
     // Dar Flush no o Receive Buffer:
     unsigned char dummy;
     while (UCSR0A & (1 << RXC)) dummy = UDR0;
