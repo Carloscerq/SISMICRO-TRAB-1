@@ -57,4 +57,3 @@ uint16_t Receive_data_EC() {
     return res; //Retornando o resultado da operação
 
 }
-

@@ -10,7 +10,7 @@
 
 /**
  * === EXEMPLOS DE COMO USAR AS MACROS! ===
- * 
+ *
  * To set a bit:
     bit_set(foo, 0x01);
  * To set bit number 5:
@@ -32,4 +32,4 @@
     }
  * To do it with a macro:
     bit_write(bit_get(foo, BIT(4)), bar, BIT(0));
-**/ 
+**/

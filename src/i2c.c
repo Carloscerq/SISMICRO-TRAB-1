@@ -14,7 +14,7 @@ void i2c_init() {
 
     TWSR = 0; /* no prescaler */
     TWBR = ((F_CPU / SCL_CLOCK) - 16) /
-           2; /* Formula from datasheet, must be > 10 for stable operation */
+        2; /* Formula from datasheet, must be > 10 for stable operation */
 }
 
 /* Issues a start condition and sends address and transfer direction.
