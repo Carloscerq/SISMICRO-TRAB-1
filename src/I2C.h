@@ -4,13 +4,13 @@
  * i2c_rep_start() */
 #define I2C_READ 1
 
-/* Defines the data direction (writing to I2C device) in i2c_start() and
- * i2c_rep_start() */
+ /* Defines the data direction (writing to I2C device) in i2c_start() and
+  * i2c_rep_start() */
 #define I2C_WRITE 0
 
-// Functions
+  // Functions
 
-/* Initialize the I2C master interace. Need to be called only once */
+  /* Initialize the I2C master interace. Need to be called only once */
 extern void i2c_init();
 
 /* Terminates the data transfer and releases the I2C bus */

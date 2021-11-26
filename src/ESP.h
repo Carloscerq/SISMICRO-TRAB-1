@@ -1,12 +1,12 @@
 #include "FCPU.h"
 
-#include <avr/io.h>			
-#include <util/delay.h>		
-#include <stdbool.h>		
-#include <string.h>			
-#include <stdio.h>			
-#include <stdlib.h>		
-#include <avr/interrupt.h>	
+#include <avr/io.h>
+#include <util/delay.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <avr/interrupt.h>
 #include "USART.h"
 
 
@@ -30,7 +30,7 @@
 
 #define RECEIVE_DEMO
 
-/* Configuração - Thingspeak */
+/* Configuraï¿½ï¿½o - Thingspeak */
 #define DOMAIN				"api.thingspeak.com"
 #define PORT				"80"
 #define API_WRITE_KEY		"api_write_key"
@@ -41,7 +41,7 @@
 
 #define THINGSPEAKER_DELAY  15000
 
-enum ESP8266_RESPONSE_STATUS{
+enum ESP8266_RESPONSE_STATUS {
 	ESP8266_RESPONSE_WAITING,
 	ESP8266_RESPONSE_FINISHED,
 	ESP8266_RESPONSE_TIMEOUT,
@@ -81,17 +81,14 @@ bool ESP8266_ApplicationMode(const uint8_t Mode); // Definir o Application Mode
 bool ESP8266_ConnectionMode(const uint8_t Mode); // Definir o Connection Mode
 bool ESP8266_WIFIMode(const uint8_t _mode); // Definir o WIFI Mode
 
-uint8_t ESP8266_JoinAccessPoint(const char _SSID[], const char _PASSWORD[]); // Configuração do ponto de acesso
-uint8_t ESP8266_connected(); // Status da conexão do ESP
+uint8_t ESP8266_JoinAccessPoint(const char _SSID[], const char _PASSWORD[]); // Configuraï¿½ï¿½o do ponto de acesso
+uint8_t ESP8266_connected(); // Status da conexï¿½o do ESP
 
 uint8_t ESP8266_Send(char Data[]); // Envio de dados pelo ESP
-int16_t ESP8266_DataAvailable(); // Verificação da disponibilidade de dados
+int16_t ESP8266_DataAvailable(); // Verificaï¿½ï¿½o da disponibilidade de dados
 uint16_t Read_Data(char _buffer[]);
 uint8_t ESP8266_DataRead(); // Leitura de dados
 
-bool ESP8266_Begin(); // Iniciar a comunicação
+bool ESP8266_Begin(); // Iniciar a comunicaï¿½ï¿½o
 void GetResponseBody(char Response[], uint16_t ResponseLength); // Extrair o corpo da Response
-bool ESP8266_Close(); // Fechar o comunicação
-
-
-
+bool ESP8266_Close(); // Fechar o comunicaï¿½ï¿½o

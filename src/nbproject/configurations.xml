@@ -12,6 +12,10 @@
       <itemPath>EC.h</itemPath>
       <itemPath>BMP.h</itemPath>
       <itemPath>ESP.h</itemPath>
+      <itemPath>FILTER.h</itemPath>
+      <itemPath>MACROS.h</itemPath>
+      <itemPath>RTC.h</itemPath>
+      <itemPath>UTILS.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -28,6 +32,9 @@
       <itemPath>ec.c</itemPath>
       <itemPath>bmp.c</itemPath>
       <itemPath>esp.c</itemPath>
+      <itemPath>filter.c</itemPath>
+      <itemPath>rtc.c</itemPath>
+      <itemPath>utils.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -46,7 +53,7 @@
         <platformTool>Simulator</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.30</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>4</platform>
       </toolsSet>
       <packs>
         <pack name="ATmega_DFP" vendor="Microchip" version="2.3.126"/>

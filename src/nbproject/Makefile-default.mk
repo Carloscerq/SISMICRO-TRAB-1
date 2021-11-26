@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c usart.c dht.c bh1750.c i2c.c ec.c bmp.c rtc.c utils.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c usart.c dht.c bh1750.c i2c.c ec.c bmp.c esp.c filter.c rtc.c utils.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/usart.o ${OBJECTDIR}/dht.o ${OBJECTDIR}/bh1750.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/ec.o ${OBJECTDIR}/bmp.o ${OBJECTDIR}/rtc.o ${OBJECTDIR}/utils.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/usart.o.d ${OBJECTDIR}/dht.o.d ${OBJECTDIR}/bh1750.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/ec.o.d ${OBJECTDIR}/bmp.o.d ${OBJECTDIR}/rtc.o.d ${OBJECTDIR}/utils.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/usart.o ${OBJECTDIR}/dht.o ${OBJECTDIR}/bh1750.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/ec.o ${OBJECTDIR}/bmp.o ${OBJECTDIR}/esp.o ${OBJECTDIR}/filter.o ${OBJECTDIR}/rtc.o ${OBJECTDIR}/utils.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/usart.o.d ${OBJECTDIR}/dht.o.d ${OBJECTDIR}/bh1750.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/ec.o.d ${OBJECTDIR}/bmp.o.d ${OBJECTDIR}/esp.o.d ${OBJECTDIR}/filter.o.d ${OBJECTDIR}/rtc.o.d ${OBJECTDIR}/utils.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/usart.o ${OBJECTDIR}/dht.o ${OBJECTDIR}/bh1750.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/ec.o ${OBJECTDIR}/bmp.o ${OBJECTDIR}/rtc.o ${OBJECTDIR}/utils.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/usart.o ${OBJECTDIR}/dht.o ${OBJECTDIR}/bh1750.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/ec.o ${OBJECTDIR}/bmp.o ${OBJECTDIR}/esp.o ${OBJECTDIR}/filter.o ${OBJECTDIR}/rtc.o ${OBJECTDIR}/utils.o
 
 # Source Files
-SOURCEFILES=main.c usart.c dht.c bh1750.c i2c.c ec.c bmp.c rtc.c utils.c
+SOURCEFILES=main.c usart.c dht.c bh1750.c i2c.c ec.c bmp.c esp.c filter.c rtc.c utils.c
 
 
 
@@ -94,110 +94,134 @@ MP_PROCESSOR_OPTION=ATmega328P
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/b3c4c55e5c2d29ad8d7dec0310d90ddeb7d68f2e .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/e7b95801c5cb0a93ed47d7c72850d40ceabd6bbb .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/main.o.d" -MT "${OBJECTDIR}/main.o.d" -MT ${OBJECTDIR}/main.o -o ${OBJECTDIR}/main.o main.c 
 	
-${OBJECTDIR}/usart.o: usart.c  .generated_files/flags/default/737b35c72b011cec156da5986fd8996dc31d6bf9 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/usart.o: usart.c  .generated_files/flags/default/eb21102480c795e9f5aae380fca768ccd8b732a6 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/usart.o.d 
 	@${RM} ${OBJECTDIR}/usart.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/usart.o.d" -MT "${OBJECTDIR}/usart.o.d" -MT ${OBJECTDIR}/usart.o -o ${OBJECTDIR}/usart.o usart.c 
 	
-${OBJECTDIR}/dht.o: dht.c  .generated_files/flags/default/9c70a2703282070405153d97194eba279adb6d79 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/dht.o: dht.c  .generated_files/flags/default/1489f5847a004b7ce5454c79e048afa47a75f4d7 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/dht.o.d 
 	@${RM} ${OBJECTDIR}/dht.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/dht.o.d" -MT "${OBJECTDIR}/dht.o.d" -MT ${OBJECTDIR}/dht.o -o ${OBJECTDIR}/dht.o dht.c 
 	
-${OBJECTDIR}/bh1750.o: bh1750.c  .generated_files/flags/default/d10a1d9cadd66575bc482a578cb2a95f465f7515 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/bh1750.o: bh1750.c  .generated_files/flags/default/cbc2f3d7c4d0f806cc739a658abba752c0666537 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/bh1750.o.d 
 	@${RM} ${OBJECTDIR}/bh1750.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/bh1750.o.d" -MT "${OBJECTDIR}/bh1750.o.d" -MT ${OBJECTDIR}/bh1750.o -o ${OBJECTDIR}/bh1750.o bh1750.c 
 	
-${OBJECTDIR}/i2c.o: i2c.c  .generated_files/flags/default/289feef085229bb36e58cf1d8782edc96f1d56cb .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/i2c.o: i2c.c  .generated_files/flags/default/f2f20bd1ab284d6e27476c284caf4501d9731f58 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/i2c.o.d 
 	@${RM} ${OBJECTDIR}/i2c.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/i2c.o.d" -MT "${OBJECTDIR}/i2c.o.d" -MT ${OBJECTDIR}/i2c.o -o ${OBJECTDIR}/i2c.o i2c.c 
 	
-${OBJECTDIR}/ec.o: ec.c  .generated_files/flags/default/84f71ef8cbc300abb16e1a1cb80637025a445900 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/ec.o: ec.c  .generated_files/flags/default/502b70dd153cd4b384a741848207999c70d97fa7 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ec.o.d 
 	@${RM} ${OBJECTDIR}/ec.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/ec.o.d" -MT "${OBJECTDIR}/ec.o.d" -MT ${OBJECTDIR}/ec.o -o ${OBJECTDIR}/ec.o ec.c 
 	
-${OBJECTDIR}/bmp.o: bmp.c  .generated_files/flags/default/d59c0cc47fc42112b261ee217b88e427f31abd09 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/bmp.o: bmp.c  .generated_files/flags/default/e103cb5bbfa2fc3122f6909ace541fbf10b15dc1 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/bmp.o.d 
 	@${RM} ${OBJECTDIR}/bmp.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/bmp.o.d" -MT "${OBJECTDIR}/bmp.o.d" -MT ${OBJECTDIR}/bmp.o -o ${OBJECTDIR}/bmp.o bmp.c 
 	
-${OBJECTDIR}/rtc.o: rtc.c  .generated_files/flags/default/13f909c991e2e2668fa00733c0dc35fa820719d1 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/esp.o: esp.c  .generated_files/flags/default/87a26639f06b4724b25e2573230ce3597ee9866c .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/esp.o.d 
+	@${RM} ${OBJECTDIR}/esp.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/esp.o.d" -MT "${OBJECTDIR}/esp.o.d" -MT ${OBJECTDIR}/esp.o -o ${OBJECTDIR}/esp.o esp.c 
+	
+${OBJECTDIR}/filter.o: filter.c  .generated_files/flags/default/357ea531dd37e32598fc14c84a285bac3671ab21 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/filter.o.d 
+	@${RM} ${OBJECTDIR}/filter.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/filter.o.d" -MT "${OBJECTDIR}/filter.o.d" -MT ${OBJECTDIR}/filter.o -o ${OBJECTDIR}/filter.o filter.c 
+	
+${OBJECTDIR}/rtc.o: rtc.c  .generated_files/flags/default/3225fea0741559e2576a01ecdfa7336f7e7de2f1 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/rtc.o.d 
 	@${RM} ${OBJECTDIR}/rtc.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/rtc.o.d" -MT "${OBJECTDIR}/rtc.o.d" -MT ${OBJECTDIR}/rtc.o -o ${OBJECTDIR}/rtc.o rtc.c 
 	
-${OBJECTDIR}/utils.o: utils.c  .generated_files/flags/default/f2298cabe2b4c2ce52323fa66cba81cdc2778a71 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/utils.o: utils.c  .generated_files/flags/default/88dd1f8dbcff381f770e6316046e518fa1316691 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/utils.o.d 
 	@${RM} ${OBJECTDIR}/utils.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/utils.o.d" -MT "${OBJECTDIR}/utils.o.d" -MT ${OBJECTDIR}/utils.o -o ${OBJECTDIR}/utils.o utils.c 
 	
 else
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/b1c9c9b3e2817423a41cd1f6825ab1ad1e92753f .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/6a1c97618896bb5e64d5c7ae1b0a6d17f1978af8 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/main.o.d" -MT "${OBJECTDIR}/main.o.d" -MT ${OBJECTDIR}/main.o -o ${OBJECTDIR}/main.o main.c 
 	
-${OBJECTDIR}/usart.o: usart.c  .generated_files/flags/default/d8d219b72a8c27138d8941fc34564ddfb49cdb1f .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/usart.o: usart.c  .generated_files/flags/default/faaa20c5e3d4e290d51fdc6d1a65f878950957a8 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/usart.o.d 
 	@${RM} ${OBJECTDIR}/usart.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/usart.o.d" -MT "${OBJECTDIR}/usart.o.d" -MT ${OBJECTDIR}/usart.o -o ${OBJECTDIR}/usart.o usart.c 
 	
-${OBJECTDIR}/dht.o: dht.c  .generated_files/flags/default/109ccff26ac5b01c2dd9a4e629ddb8cd051293a6 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/dht.o: dht.c  .generated_files/flags/default/a85ebc29c75cad0b72934dbed5520eeb7ac79e4f .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/dht.o.d 
 	@${RM} ${OBJECTDIR}/dht.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/dht.o.d" -MT "${OBJECTDIR}/dht.o.d" -MT ${OBJECTDIR}/dht.o -o ${OBJECTDIR}/dht.o dht.c 
 	
-${OBJECTDIR}/bh1750.o: bh1750.c  .generated_files/flags/default/68ad4185a540b02cb5367c7d46d6601884c4d761 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/bh1750.o: bh1750.c  .generated_files/flags/default/fb318e67cb3ae5b0a75cc33e70cb225c7e38a3f0 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/bh1750.o.d 
 	@${RM} ${OBJECTDIR}/bh1750.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/bh1750.o.d" -MT "${OBJECTDIR}/bh1750.o.d" -MT ${OBJECTDIR}/bh1750.o -o ${OBJECTDIR}/bh1750.o bh1750.c 
 	
-${OBJECTDIR}/i2c.o: i2c.c  .generated_files/flags/default/e52e8bafdf7089c75b0af5a947776e506159d24f .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/i2c.o: i2c.c  .generated_files/flags/default/607103081366c9e1559dd7f328ddf3bbc401c9ea .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/i2c.o.d 
 	@${RM} ${OBJECTDIR}/i2c.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/i2c.o.d" -MT "${OBJECTDIR}/i2c.o.d" -MT ${OBJECTDIR}/i2c.o -o ${OBJECTDIR}/i2c.o i2c.c 
 	
-${OBJECTDIR}/ec.o: ec.c  .generated_files/flags/default/2f09c33b825abd979a004dbd81a42e1f68daf20d .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/ec.o: ec.c  .generated_files/flags/default/e4c0d4b2be2f9b8ec2a5e9a929d54eafdbf456f5 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ec.o.d 
 	@${RM} ${OBJECTDIR}/ec.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/ec.o.d" -MT "${OBJECTDIR}/ec.o.d" -MT ${OBJECTDIR}/ec.o -o ${OBJECTDIR}/ec.o ec.c 
 	
-${OBJECTDIR}/bmp.o: bmp.c  .generated_files/flags/default/cb9c2b283e2326b214e786b9e5f1549999cbfb42 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/bmp.o: bmp.c  .generated_files/flags/default/cbca0d74f5e88e110c05e88c3a44bdb1dfd418f8 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/bmp.o.d 
 	@${RM} ${OBJECTDIR}/bmp.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/bmp.o.d" -MT "${OBJECTDIR}/bmp.o.d" -MT ${OBJECTDIR}/bmp.o -o ${OBJECTDIR}/bmp.o bmp.c 
 	
-${OBJECTDIR}/rtc.o: rtc.c  .generated_files/flags/default/d213608540a8eecdecbbc398199d6c99f69b694b .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/esp.o: esp.c  .generated_files/flags/default/451e395d78e3946ee21abcf95fd422a2f1981c92 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/esp.o.d 
+	@${RM} ${OBJECTDIR}/esp.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/esp.o.d" -MT "${OBJECTDIR}/esp.o.d" -MT ${OBJECTDIR}/esp.o -o ${OBJECTDIR}/esp.o esp.c 
+	
+${OBJECTDIR}/filter.o: filter.c  .generated_files/flags/default/beb09a2c3e499267c280456e85dcfdce3ae14541 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/filter.o.d 
+	@${RM} ${OBJECTDIR}/filter.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/filter.o.d" -MT "${OBJECTDIR}/filter.o.d" -MT ${OBJECTDIR}/filter.o -o ${OBJECTDIR}/filter.o filter.c 
+	
+${OBJECTDIR}/rtc.o: rtc.c  .generated_files/flags/default/3cb93dd02f06e5b8b1d2ef0b907677e07fefb1a7 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/rtc.o.d 
 	@${RM} ${OBJECTDIR}/rtc.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/rtc.o.d" -MT "${OBJECTDIR}/rtc.o.d" -MT ${OBJECTDIR}/rtc.o -o ${OBJECTDIR}/rtc.o rtc.c 
 	
-${OBJECTDIR}/utils.o: utils.c  .generated_files/flags/default/bd2731825eebe5a2d10788cf35d658bf0f7b1eb5 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
+${OBJECTDIR}/utils.o: utils.c  .generated_files/flags/default/ce0d3ef65c4ec1580782b9f21ac8a3ba049b02e8 .generated_files/flags/default/d8eafc7eb14b8fddc629f2f6a79e8becd4a12353
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/utils.o.d 
 	@${RM} ${OBJECTDIR}/utils.o 

@@ -29,11 +29,11 @@ uint8_t c = 0;
 
 uint8_t Receive_data() /* receber dados do DHT22 */ {
     for (int q = 0; q < 8; q++) {
-        while ((PIND & (1 << PIND6)) == 0); /* checar qual se é bit 0 ou 1 */
+        while ((PIND & (1 << PIND6)) == 0); /* checar qual se ï¿½ bit 0 ou 1 */
         _delay_us(30);
         if (PIND & (1 << PIND6))/* se o high pulse for maior do que 30us */
-            c = (c << 1) | (0x01); /* é HIGH */
-        else /* senão, é LOW */
+            c = (c << 1) | (0x01); /* ï¿½ HIGH */
+        else /* senï¿½o, ï¿½ LOW */
             c = (c << 1);
         ;
         while (PIND & (1 << PIND6));
